@@ -1,0 +1,34 @@
+import { UserButton, SignInButton, SignedOut, SignedIn } from '@clerk/nextjs'
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from "@/components/ui/button";
+
+
+
+const Header = () => {
+  return (
+    <div className='fixed top-0 w-full bg-white/8- backdrop-blur-md z-50 border-b'>
+
+
+
+      <nav className='container mx-auto px-4 py-4 flex items-center justify-between'>
+        <Link href="/">
+        <Image
+        src={"/logo.png"} alt="logo" height={50} width={100}
+        className= "h-12 w-auto object-contain"/>
+        </Link>
+        <SignedOut>
+            <SignInButton forceRedirectUrl='dashboard'>
+          <Button variant="outline">login</Button>
+            </SignInButton>
+            </SignedOut>
+            <SignedIn>
+                <UserButton />
+            </SignedIn>
+              </nav>
+    </div> 
+  )
+}
+
+export default Header
